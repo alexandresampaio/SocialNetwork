@@ -5,81 +5,78 @@
  <LINK REL="stylesheet" HREF="css/cadastro.css" TYPE="text/css" />
 </HEAD>
 <BODY>
-      <DIV ID="topo">
-           <DIV ID="cAlign">
-                <A HREF="#">
-                   <IMG SRC="images/logo.png" ALT="social-network.com" />
-                   <SPAN>
-                         <A HREF="#">Portal</A> | <A HREF="#">Forum</A>
-                   </SPAN>
-                </A>
-           </DIV><!-- cAlign -->
-      </DIV><!-- topo -->
-      <DIV ID="cAlign">
-           <DIV ID="content">
-                <DIV ID="left">
-                     <UL>
+      <div id="topo">
+           <div class="alinhamento">
+                <a href="#"><img SRC="imagens/logo.png" alt="social-network.com" id="logo"/></a>
+                <span><span>&nbsp&nbsp</span><a href="#">Portal</a><a href="#">Forum</a></span>
+           </div><!-- cAlign -->
+      </div><!-- topo -->
+      <div class="alinhamento">
+           <div id="content">
+                <div id="left">
+                     <ul>
                          <li>eu sou</li>
                          <li>data de nascimento</li>
                          <li>meu e-mail</li>
                          <li>nova senha</li>
                          <li>verificação contra fraudes</li>
-                     </UL>
-                </DIV><!-- left -->
+                     </ul>
+                </div><!-- left -->
            
-                <DIV ID="formulario">
-                     <FORM NAME="cadastro" METHOD="post" ACTION="" >
+                <div id="formulario">
+                     <form name="cadastro" method="post" action="" >
                            <div>
                                 <div class="inputFloat">
                                      <span>nome</span>
-                                     <input type="text" name="nome" class="inputText" />
+                                     <input type="text" name="nome" class="inputTxt" />
                                 </div>
                                 
                                 <div class="inputFloat">
                                      <span>sobrenome</span>
-                                     <input type="text" name="sobrenome" class="inputText" />
+                                     <input type="text" name="sobrenome" class="inputTxt" />
                                 </div>
                            </div>
                            
-                           <SPAN class="spanHide">eu sou</SPAN>
+                           <span class="spanHide">eu sou</span>
                            <select name="sexo">
                                    <option value="">Selecione seu Genero</option>
                            </select>
                            
-                           <SPAN class="spanHide">Data de nascimento</SPAN>
-                           <select name="dia">
+                           <span class="spanHide">Data de nascimento</span>
+                                 <select name="dia">
                                    <option value="">Dia</option>
-                           </select>
-                           <select name="mes">
+                                 </select>
+                                 <select name="mes">
                                    <option value="">Mes</option>
-                           </select>
-                           <select name="ano">
-                                   <option value="">ano</option>
-                           </select>
+                                 </select>
+                                 <select name="ano">
+                                   <option value="">Ano</option>
+                                 </select>
                            
                            <span>seu e-mail</span>
-                           <input type="text" name="email" class="inputText" />
+                           <input type="text" name="email" class="inputTxt" />
                            
                            <span>nova senha</span>
-                           <input type="text" name="senha" class="inputText" />
+                           <input type="text" name="senha" class="inputTxt" />
                            
                            <div>
                                 <div class="captchaFloat">
-                                     <IMG SRC="#" width="200" height="60" alt="captcha" />
+                                     <img SRC="#" width="200" height="60" alt="captcha" />
                                 </div>
                                 
                                 <div class="captchaFloat">
-                                     <SPAN>digite os caracteres</SPAN>
-                                     <input type="text" name="palavra" class="inputText" />
+                                     <span>digite os caracteres</span>
+                                     <input type="text" name="palavra" class="inputTxt" />
                                 </div>
                            </div>
-                           <SPAN>&nbsp</SPAN>
-                           <input type="submit" name="cadastrar" />
+                           
+                           <span>&nbsp</span>
+                           <input type="submit" value="" class="submitCadastro" name="cadastrar" />
 
-                     </FORM>
-                </DIV><!-- formulario -->
-           </DIV><!-- content -->
-       </DIV><!-- cAlign -->
+                     </form>
+                </div><!-- formulario -->
+           </div><!-- content -->
+       </div><!-- cAlign -->
 
 </BODY>
 </HTML>

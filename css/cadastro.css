@@ -1,19 +1,17 @@
 /* DEVELOPED BY ME */
-* { margin: 0 auto; padding:0; }
+*{ margin: 0; padding:  0; }
 
 body
 {
+	background: #E1E1E1;
 	font-size: 62.5%;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; 
 	color: #333;
 }
 
-ul
-{
-	list-style:none;
-}
+ul{ list-style: none; }
 
-.cAlign
+.alinhamento
 {
 	min-width: 240px;
 	max-width: 1200px;
@@ -21,12 +19,49 @@ ul
 	margin: 0 auto;
 }
 
-div#topo{}
+img#logo{ position:relative; margin-top: -2px; width: 160px;}
 
-div#content {}
+div#topo  { 	background: #333; 	padding: 0.5em  0;  overflow:hidden; }
+	div#topo img { float: left;}
+	div#topo span{ float: right;}
+	div#topo span a{ margin-right: 2px; padding: 0.5em 1em; background: #000; color: #FFF; }
 
-div#left {}
+div#content { margin : 1em 0;  }
 
-div#formulario {}
+	div#left {	display: none; }
+
+	div#formulario 
+	{
+		padding: 1em;
+		text-align: center;
+		background: #FFF;
+		box-shadow: inset 0 0 1em  #666;
+		border-radius: 0.5em;
+	}
+
+		div#formulario input.inputTxt , select
+		{
+			border: 1px solid #CCC; 
+			padding: 0.3em;
+			margin-bottom:  1em;
+		}
+
+		div#formulario span
+		{
+			font-size: 1.3em;
+			color:  #999;
+			display: block;
+		}
+
+		.submitCadastro
+		{ 
+			width: 149px; 
+			height: 63px;
+			background: url(../imagens/cadastrar_BTN.png) no-repeat;
+			border: none;
+			position: absolute;
+			margin-top: -10px;
+			cursor: pointer;
+		}
 
 div#footer{}
