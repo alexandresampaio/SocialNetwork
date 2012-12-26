@@ -1,0 +1,32 @@
+/* DEVELOPED BY ME */
+* { margin: 0 auto; padding:0; }
+
+body
+{
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; 
+	color: #333;
+}
+
+ul
+{
+	list-style:none;
+}
+
+.cAlign
+{
+	min-width: 240px;
+	max-width: 1200px;
+	width: 98%;
+	margin: 0 auto;
+}
+
+div#topo{}
+
+div#content {}
+
+div#left {}
+
+div#formulario {}
+
+div#footer{}
