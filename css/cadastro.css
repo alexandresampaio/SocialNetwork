@@ -60,7 +60,8 @@ div#content { margin : 1em 0;  }
 			background: url(../imagens/cadastrar_BTN.png) no-repeat;
 			border: none;
 			position: absolute;
-			margin-top: -10px;
+			margin-top: -24px;
+			margin-left: -25px;
 			cursor: pointer;
 		}
 
