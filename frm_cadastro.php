@@ -22,7 +22,7 @@
                          <li>verificação contra fraudes</li>
                      </ul>
                 </div><!-- left -->
-           
+                <H1>Cadastre-se,<span>&nbsp é gratis</span></H1>
                 <div id="formulario">
                      <form name="cadastro" method="post" action="" >
                            <div>
@@ -53,18 +53,18 @@
                                    <option value="">Ano</option>
                                  </select>
                            
-                           <span>seu e-mail</span>
+                           <span class="spanHide">seu e-mail</span>
                            <input type="text" name="email" class="inputTxt" />
                            
-                           <span>nova senha</span>
+                           <span class="spanHide">nova senha</span>
                            <input type="text" name="senha" class="inputTxt" />
-                           
+                           <span class="spanHide">Verificação contra fraudes</span>
                            <div>
                                 <div class="captchaFloat">
                                      <img SRC="#" width="200" height="60" alt="captcha" />
                                 </div>
                                 
-                                <div class="captchaFloat">
+                                <div class="inputFloat">
                                      <span>digite os caracteres</span>
                                      <input type="text" name="palavra" class="inputTxt" />
                                 </div>
@@ -78,5 +78,8 @@
            </div><!-- content -->
        </div><!-- cAlign -->
 
+       <div id="footer">
+            <p>&copy Copyright 2012 - allexonrails.com - Todos os direitos reservados</p>
+       </div>
 </BODY>
 </HTML>

@@ -21,12 +21,14 @@ ul{ list-style: none; }
 
 img#logo{ position:relative; margin-top: -2px; width: 160px;}
 
-div#topo  { 	background: #333; 	padding: 0.5em  0;  overflow:hidden; }
+div#topo  { 	background: #191970; 	padding: 0.5em  0;  overflow:hidden; }
 	div#topo img { float: left;}
 	div#topo span{ float: right;}
-	div#topo span a{ margin-right: 2px; padding: 0.5em 1em; background: #000; color: #FFF; }
+	div#topo span a{ margin-right: 2px; padding: 0.5em 1em; background: #191970; color: #FFF; }
 
-div#content { margin : 1em 0;  }
+div#content { clear:both; overflow:hidden;  margin : 1em 0;  }
+	div#content  h1 { font-size: 1.6em;  margin-bottom: 1em; }
+		div#content  h1  span { font-size: 0.6em; }
 
 	div#left {	display: none; }
 
@@ -65,4 +67,61 @@ div#content { margin : 1em 0;  }
 			cursor: pointer;
 		}
 
-div#footer{}
+div#footer
+{
+	clear: both;
+	margin: 4em 0 1em;
+	font-size: 1.1 em;
+	text-align: center;
+ }
+ 
+ /*  
+	@media  é uma condição que deve 
+	ser observada pelo navegador.
+ */
+@media  screen  and   (min-width:360px)
+{
+	body {font-size: 70%; }
+	div#formulario { padding: 3em;}
+	div#formulario input.inputTxt { width: 280px; }
+	.submitCadastro { margin-top: -1px;}
+}
+ 
+@media  screen  and   (min-width:613px)
+{
+	div#formulario 
+	{ 
+		padding: 1.5em;
+		text-align: left;
+		background: #FFF url(../imagens/social-network.png)  right no-repeat;
+	}
+	.submitCadastro { margin-top: -18px; margin-left: 5px;}
+}
+
+@media  screen  and  (min-width: 773px) 
+{
+	div#formulario { float: right;  width: 545px;}
+		div#formulario  div { overflow: hidden; }
+	div#formulario input.inputTxt { width: 200px; }
+	div#left 
+	{	
+		font-size: 1.3em;
+		padding-right:0.5em;
+		display: block;  
+		float: left; 
+		margin-top: 140px;
+		text-align: right;
+		width: 150px;
+	}
+		div#left  ul li
+		{
+			border-bottom: 1px solid #CCC;
+			padding-bottom: 1.2em;
+			margin-bottom: 1.5em;
+		}
+		div#left  ul li:last-child { border:none; }
+	.inputFloat	{ 	float: left;   width: 240px;	}
+	.captchaFloat  { float: left;  width :250px; }
+	.spanHide  { visibility: hidden;}
+}
+@media  screen  and  (min-width: 1024px)  {  div#left {	 margin-left: 300px; }  }
