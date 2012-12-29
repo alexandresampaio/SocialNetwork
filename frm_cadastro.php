@@ -26,6 +26,7 @@
                      <h1>Cadastre-se,<span>&nbsp é gratis</span></h1>
                 </div>
                 <div id="formulario">
+
                      <form name="cadastro" method="post" action="" >
                            <div>
                                 <div class="inputFloat">

@@ -1,10 +1,17 @@
 <?php
+    /*
+      ###############################
+      #   ARQUIVO PHP RESPONSAVEL   #
+      #  POR EMBARALHAR AS LETRAS   #
+      #        O CAPTCHA            #
+      ###############################
+    */
     session_start();
     
     header('Content-type: image/jpeg');
     
     $image = imagecreate(350, 70);
-    $fonte= 'spell.ttf';
+    $fonte= 'aladin.ttf';
 
     $corFundo = imagecolorallocate($image, 255,255, 255);
     $corLetra = imagecolorallocate($image,155, 48, 255);
