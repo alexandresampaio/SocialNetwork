@@ -42,6 +42,8 @@
                            <span class="spanHide">eu sou</span>
                            <select name="sexo">
                                    <option value="">Selecione seu Genero</option>
+                                   <option value="feminina">Feminino</option>
+                                   <option value="masculino">Masculino</option>
                            </select>
                            
                            <span class="spanHide">Data de nascimento</span>
@@ -83,7 +85,7 @@
                            <span class="spanHide">Verificação contra fraudes</span>
                            <div>
                                 <div class="captchaFloat">
-                                     <img SRC="#" width="200" height="60" alt="captcha" />
+                                     <img src="captcha/captcha.php" />
                                 </div>
                                 
                                 <div class="inputFloat">
