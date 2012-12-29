@@ -22,7 +22,9 @@
                          <li>verificação contra fraudes</li>
                      </ul>
                 </div><!-- left -->
-                <H1>Cadastre-se,<span>&nbsp é gratis</span></H1>
+                <div id="cadastro_title">
+                     <h1>Cadastre-se,<span>&nbsp é gratis</span></h1>
+                </div>
                 <div id="formulario">
                      <form name="cadastro" method="post" action="" >
                            <div>
@@ -43,15 +45,35 @@
                            </select>
                            
                            <span class="spanHide">Data de nascimento</span>
-                                 <select name="dia">
-                                   <option value="">Dia</option>
-                                 </select>
-                                 <select name="mes">
-                                   <option value="">Mes</option>
-                                 </select>
-                                 <select name="ano">
-                                   <option value="">Ano</option>
-                                 </select>
+                           <select name="dia">
+                              <?php
+                                 for ($dia= 1; $dia<=31; $dia++)
+                                 {
+                                    $zero = ($dia < 10) ? 0 : '';
+                                    echo '<option value="',$zero, $dia,'">',$zero, $dia,'</option>';
+                                 }
+                              ?>
+                           </select>
+                           <select name="mes">
+                              <?php
+                                $meses = array('','Janeiro', 'Fevereiro', 'Março', 'Abril',
+                                'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+                                'Novembro', 'Dezembro');
+                                for ($m=1; $m<=12; $m++)
+                                {
+                                  $zero = ($dia < 10) ? 0 : '';
+                                  echo '<option value="',$zero,$m,'">',$meses[$m],'</option>';
+                                }
+                              ?>
+                           </select>
+                           <select name="ano">
+                              <?php
+                                for($a=date('Y'); $a>=date('Y')-50; $a--)
+                                {
+                                   echo '<option value="',$a,'">',$a,'</option>';
+                                }
+                              ?>
+                           </select>
                            
                            <span class="spanHide">seu e-mail</span>
                            <input type="text" name="email" class="inputTxt" />

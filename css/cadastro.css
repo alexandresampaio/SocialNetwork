@@ -87,7 +87,7 @@ div#footer
 	.submitCadastro { margin-top: -1px;}
 }
  
-@media  screen  and   (min-width:613px)
+@media  screen  and   (min-width: 613px)
 {
 	div#formulario 
 	{ 
@@ -100,7 +100,7 @@ div#footer
 
 @media  screen  and  (min-width: 773px) 
 {
-	div#formulario { float: right;  width: 545px;}
+	div#formulario {   width: 58%;  float: right; }
 		div#formulario  div { overflow: hidden; }
 	div#formulario input.inputTxt { width: 200px; }
 	div#left 
@@ -109,9 +109,11 @@ div#footer
 		padding-right:0.5em;
 		display: block;  
 		float: left; 
-		margin-top: 140px;
+		margin-top: 180px;
+		margin-left: 110px;
 		text-align: right;
-		width: 150px;
+		width: 25%;
+		min-height: 300px;
 	}
 		div#left  ul li
 		{
@@ -124,4 +126,24 @@ div#footer
 	.captchaFloat  { float: left;  width :250px; }
 	.spanHide  { visibility: hidden;}
 }
-@media  screen  and  (min-width: 1024px)  {  div#left {	 margin-left: 300px; }  }
+
+@media  screen  and  (min-width: 997px) 
+{
+	div#content { margin: 0 6em;}
+} 
+
+@media  screen  and  (min-width: 1024px)  
+{  
+	div#footer
+	{
+		font-size: 1.5em;
+		margin-top: 110px;
+	}
+	div#cadastro_title 
+	{
+		position: relative;
+		left:  30px;
+		font-size: 1.5em;
+		margin-top: 1em;
+	}
+}
