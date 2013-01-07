@@ -1,8 +1,14 @@
+<?php
+	//inicializa a session_cache
+	session_start();
+?>
 <!DOCTYPE HTML>
 <HTML LANG="pt-br">
 <HEAD>
  <TITLE>Social-Network - Cadastro</TITLE>
  <LINK REL="stylesheet" HREF="css/cadastro.css" TYPE="text/css" />
+ <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="js/efeitos.js"></script>
 </HEAD>
 <BODY>
       <div id="topo">
@@ -27,33 +33,102 @@
                 </div>
                 <div id="formulario">
 
+                     <?php
+                         if(isset($_SERVER['REQUEST_METHOD']) AND $_SERVER['REQUEST_METHOD']== 'POST')
+                         {
+                           extract($_POST);
+                           /*var_dump($_POST); */
+						   echo "<h3>";
+
+                           if($nome == '' OR strlen($nome)<4)
+                           { echo 'Escreva seu nome corretamente'; }
+                           elseif($sobrenome == '' OR strlen($sobrenome) < 6)
+                           { echo 'Escreva seu sobrenome corretamente'; }
+                           elseif($email == '')
+                           { echo 'Escreva seu email'; }
+                           elseif(!preg_match("/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]+\.[a-z]{2,4}$/i", $email ))
+                           { echo 'Este email é invalido'; }
+                           else
+							{
+								include('db/db.class.php');
+								try
+								{
+									/*
+										Uso do acento chamado crase 
+										tem funcionalidade distinta do 
+										acento agudo convencional.
+									*/
+								   $verificar = DB::getConn()->prepare("SELECT `id` FROM usuarios WHERE `email` =? ");
+								   if($verificar->execute(array($email)))
+									{
+										if($verificar -> rowCount() >= 1)
+										{
+											echo 'Este email ja esta sendo utilizado!';
+										}
+										elseif($senha == '' OR strlen($senha)<4)
+										{
+											echo 'Digite sua senha, ou ela deve ter mais de 4 caracteres!';
+										}
+										elseif(strtolower($_POST['captcha']) <> strtolower($_SESSION['captchaCadastro']))
+										{
+											 echo 'O codigo informado não confere. Tente novamente!';
+										}
+										else
+										{
+											$senhaEncrypt = sha1($senha);
+											$nascimento= "$ano-$mes-$dia";
+											$INSERIR = DB::getConn() -> prepare("INSERT INTO `usuarios` SET `email`=?, `senha`=?, `nome`=?, `sobrenome`=?, `sexo`=?, `nascimento`=?, `cadastro`=NOW()");
+											if($INSERIR -> execute(array($email, $senhaEncrypt, $nome, $sobrenome, $sexo, $nascimento)))
+											{
+											 header('Location: ./');
+											}
+										}
+									}
+								}
+								catch(PDOException $e)
+								{
+									echo "Algo ruim aconteceu! ";
+									logErros($e);
+								}
+							}
+							echo "</h3>";
+						}
+                     ?>
                      <form name="cadastro" method="post" action="" >
+							
                            <div>
                                 <div class="inputFloat">
                                      <span>nome</span>
-                                     <input type="text" name="nome" class="inputTxt" />
+                                     <input type="text" name="nome"  class="inputTxt" value='<?php if(isset($_POST["nome"]))  echo $nome ;?>'  />
                                 </div>
                                 
                                 <div class="inputFloat">
                                      <span>sobrenome</span>
-                                     <input type="text" name="sobrenome" class="inputTxt" />
+                                     <input type="text" name="sobrenome"  class="inputTxt" value='<?php if(isset($_POST["sobrenome"]))  echo $sobrenome ;?>'  />
                                 </div>
                            </div>
                            
                            <span class="spanHide">eu sou</span>
                            <select name="sexo">
                                    <option value="">Selecione seu Genero</option>
-                                   <option value="feminina">Feminino</option>
-                                   <option value="masculino">Masculino</option>
+                                   <option   value="feminino">Feminino</option>
+                                   <option   value="masculino">Masculino</option>
                            </select>
                            
                            <span class="spanHide">Data de nascimento</span>
                            <select name="dia">
                               <?php
-                                 for ($dia= 1; $dia<=31; $dia++)
+                                 for ($d= 1; $d<=31; $d++)
                                  {
-                                    $zero = ($dia < 10) ? 0 : '';
-                                    echo '<option value="',$zero, $dia,'">',$zero, $dia,'</option>';
+                                    $zero = ($d < 10) ? 0 : '';
+                                    if($dia == $zero.$d)
+                                    {
+                                      echo '<option selected="selected" value="',$zero, $d,'">',$zero, $d,'</option>';
+                                    }
+                                    else
+                                    {
+                                      echo '<option value="',$zero, $d,'">',$zero, $d,'</option>';
+                                    }
                                  }
                               ?>
                            </select>
@@ -64,8 +139,16 @@
                                 'Novembro', 'Dezembro');
                                 for ($m=1; $m<=12; $m++)
                                 {
-                                  $zero = ($dia < 10) ? 0 : '';
-                                  echo '<option value="',$zero,$m,'">',$meses[$m],'</option>';
+                                  $zero = ($m < 10) ? 0 : '';
+                                  if($zero.$m == $mes)
+                                  {
+                                    echo '<option selected="selected "value="',$zero,$m,'">',$meses[$m],'</option>';
+                                  }
+                                  else
+                                  {
+                                    echo '<option value="',$zero,$m,'">',$meses[$m],'</option>';
+                                  }
+
                                 }
                               ?>
                            </select>
@@ -73,29 +156,38 @@
                               <?php
                                 for($a=date('Y'); $a>=date('Y')-50; $a--)
                                 {
-                                   echo '<option value="',$a,'">',$a,'</option>';
+                                   if($a == $ano)
+                                   {
+                                     echo '<option selected="selected" value="',$a,'">',$a,'</option>';
+                                   }
+                                   else
+                                   {
+                                     echo '<option value="',$a,'">',$a,'</option>';
+                                   }
                                 }
                               ?>
                            </select>
                            
                            <span class="spanHide">seu e-mail</span>
-                           <input type="text" name="email" class="inputTxt" />
+                           <input type="text" name="email"  class="inputTxt"  value='<?php if(isset($_POST["email"]))  echo $email ;?>'/>
                            
                            <span class="spanHide">nova senha</span>
-                           <input type="text" name="senha" class="inputTxt" />
+                           <input type="password" name="senha" class="inputTxt" />
                            <span class="spanHide">Verificação contra fraudes</span>
-                           <div>
-                                <div class="captchaFloat">
-                                     <img src="captcha/captcha.php" />
-                                </div>
-                                
-                                <div class="inputFloat">
+                          
+						  <div>
+                               <?php
+									echo '<div class="captchaFloat">';
+									echo '<img src="captcha/captcha.php" />';
+									echo '</div>';
+								?>
+								<div class="inputFloat">
                                      <span>digite os caracteres</span>
-                                     <input type="text" name="palavra" class="inputTxt" />
+                                     <input type="text" name="captcha" class="inputTxt" />
                                 </div>
                            </div>
-                           
-                           <span>&nbsp</span>
+						   
+						   <span>&nbsp</span>
                            <input type="submit" value="" class="submitCadastro" name="cadastrar" />
 
                      </form>
