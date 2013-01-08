@@ -11,7 +11,7 @@
         
         private function chech ($email)
         {
-            $check = self::getConn()->prepare('SELECT `id` FROM `'.$this->_tabela.'` WHERE `email`=?');
+            $check = self::getConn()->prepare('SELECT `id` FROM `'.$this->_tabela.'` WHERE `email`=? LIMIT 1');
             $check->execute(array($dados['email']));
             /*$check->execute(array($email));*/
             
@@ -24,7 +24,7 @@
             {
                 if($value == '')
                 {
-                    $this->erro[] = 'O Campo <STRONG>'.$column.'</STRONG> é obrigatorio.';
+                    $this->erro[] = 'O Campo <STRONG>'.$column.'</STRONG> é obrigatoacute;rio.';
                 }
                 elseif(!preg_match("/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]+\.[a-z]{2,4}$/i", $value ))
                 {
@@ -40,7 +40,7 @@
             {
                 if(empty($this->erro))
                 {
-                   $INSERIR = DB::getConn() -> prepare('INSERT INTO '.$this->tabela.' SET `email`=?, `senha`=?, `nome`=?, `sobrenome`=?, `sexo`=?, `nascimento`=?, `cadastro`=NOW()");
+                   $INSERIR = DB::getConn() -> prepare('INSERT INTO '.$this->tabela.' SET `email`=?, `senha`=?, `nome`=?, `sobrenome`=?, `sexo`=?, `nascimento`=?, `cadastro`=NOW()');
                 }
             }
             else
