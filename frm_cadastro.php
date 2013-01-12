@@ -38,60 +38,31 @@
                          {
                            extract($_POST);
                            /*var_dump($_POST); */
-						   echo "<h3>";
+                           foreach($_POST as $key=>$val)
+                           {
+                             $_POST[$key] = strip_tags(trim($val));
+                           }
 
-                           if($nome == '' OR strlen($nome)<4)
-                           { echo 'Escreva seu nome corretamente'; }
-                           elseif($sobrenome == '' OR strlen($sobrenome) < 6)
-                           { echo 'Escreva seu sobrenome corretamente'; }
-                           elseif($email == '')
-                           { echo 'Escreva seu email'; }
-                           elseif(!preg_match("/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]+\.[a-z]{2,4}$/i", $email ))
-                           { echo 'Este email é invalido'; }
-                           else
-							{
-								include('db/db.class.php');
-								try
-								{
-									/*
-										Uso do acento chamado crase 
-										tem funcionalidade distinta do 
-										acento agudo convencional.
-									*/
-								   $verificar = DB::getConn()->prepare("SELECT `id` FROM usuarios WHERE `email` =? ");
-								   if($verificar->execute(array($email)))
-									{
-										if($verificar -> rowCount() >= 1)
-										{
-											echo 'Este email ja esta sendo utilizado!';
-										}
-										elseif($senha == '' OR strlen($senha)<4)
-										{
-											echo 'Digite sua senha, ou ela deve ter mais de 4 caracteres!';
-										}
-										elseif(strtolower($_POST['captcha']) <> strtolower($_SESSION['captchaCadastro']))
-										{
-											 echo 'O codigo informado não confere. Tente novamente!';
-										}
-										else
-										{
-											$senhaEncrypt = sha1($senha);
-											$nascimento= "$ano-$mes-$dia";
-											$INSERIR = DB::getConn() -> prepare("INSERT INTO `usuarios` SET `email`=?, `senha`=?, `nome`=?, `sobrenome`=?, `sexo`=?, `nascimento`=?, `cadastro`=NOW()");
-											if($INSERIR -> execute(array($email, $senhaEncrypt, $nome, $sobrenome, $sexo, $nascimento)))
-											{
-											 header('Location: ./');
-											}
-										}
-									}
-								}
-								catch(PDOException $e)
-								{
-									echo "Algo ruim aconteceu! ";
-									logErros($e);
-								}
-							}
-							echo "</h3>";
+                           include('db/db.class.php');
+                           include('controllers/cadastro.class.php');
+
+                           $nascimento= "$ano-$mes-$dia";
+                           $cadastro = new Cadastro(
+                                array(
+                                    'captcha'=>$captcha,
+                                    'nome'=>$nome,
+                                    'sobrenome'=>$sobrenome,
+                                    'sexo'=>$sexo,
+                                    'nascimento'=>$nascimento,
+                                    'email'=>$email,
+                                    'senha'=>$senha
+                                )
+                           );
+                           if(!empty($cadastro->erro))
+                           {
+                                echo '<h3>'.$cadastro->getErros().'</h3>';
+                           }
+
 						}
                      ?>
                      <form name="cadastro" method="post" action="" >

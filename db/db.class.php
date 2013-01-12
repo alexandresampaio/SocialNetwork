@@ -27,7 +27,7 @@
 		
 		if(ini_get('log_errors')) error_log(sprintf("PHP %s: %s in %s on the line %d", $err, $errstr, $errfile, $errline ));
 		
-		$strERRO =  'erro: 	'.$err.'	no arquivo:	'.$errfile.'	 ( linha: 	'.$errline.' )	::	IP( '.$_SERVER['REMOTE_ADDR'].'	)	data: '.date('d/m/Y 	H:i:s')."\n";
+		$strERRO =  'erro: 	'.$err.'	no arquivo:	'.$errfile.' ( linha: '.$errline.' )	::	IP( '.$_SERVER['REMOTE_ADDR'].'	)	data: '.date('d/m/Y H:i:s')."\n";
 		
 		$arquivo = fopen('logErro.bin', 'a');
 		fwrite($arquivo, $strERRO);

@@ -1,9 +1,9 @@
 <?php
     /*
       ###############################
-      #   ARQUIVO PHP RESPONSAVEL   	#
-      #  POR EMBARALHAR AS LETRAS    #
-      #        			DO CAPTCHA          	 		#
+      #   ARQUIVO PHP RESPONSAVEL   #
+      #  POR EMBARALHAR AS LETRAS   #
+      #          DO CAPTCHA         #
       ###############################
     */
 
