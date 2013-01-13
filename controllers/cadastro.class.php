@@ -7,8 +7,8 @@
         
         function __construct(array $dados, $table="usuarios")
         {
-            $this->_tabela= $table;
-            $this->dados = $dados;
+            $this->_tabela=$table;
+            $this->dados=$dados;
             
             $this->register();
         }
@@ -31,7 +31,9 @@
             condição do register.
 
             */
-            $check->execute(array($this->dados['email']));
+            $check->execute(array($email));
+			//pode ser array($email) ou 
+			//$check->execute(array($this->dados['email']));
             return $check->rowCount();
         }
         
@@ -77,7 +79,7 @@
                 {
                    unset($this->dados['captcha']);
 
-                   $INSERIR = DB::getConn() -> prepare('INSERT INTO '.$this->tabela.' SET '.$this->setCampos().'`cadastro`=NOW()');
+                   $INSERIR=self::getConn()->prepare('INSERT INTO '.$this->_tabela.' SET '.$this->setCampos().', `cadastro`=NOW()');
                    if($INSERIR->execute(array_values($this->dados)))
                    {
                         header('Location: ./');
