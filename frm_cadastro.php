@@ -13,7 +13,7 @@
 <BODY>
       <div id="topo">
            <div class="alinhamento">
-                <a href="#"><img SRC="imagens/logo.png" alt="social-network.com" id="logo"/></a>
+                <a href="#"><img SRC="assets/imagens/logo.png" alt="social-network.com" id="logo"/></a>
                 <span><span>&nbsp&nbsp</span><a href="#">Portal</a><a href="#">Forum</a></span>
            </div><!-- cAlign -->
       </div><!-- topo -->

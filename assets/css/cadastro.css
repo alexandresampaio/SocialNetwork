@@ -59,7 +59,7 @@ div#content { clear:both; overflow:hidden;  margin : 1em 0;  }
 		{ 
 			width: 149px; 
 			height: 63px;
-			background: url(..assets/imagens/cadastrar_BTN.png) no-repeat;
+			background: url("../imagens/cadastrar_BTN.png") no-repeat;
 			border: none;
 			position: absolute;
 			margin-top: -24px;
@@ -93,7 +93,7 @@ div#footer
 	{ 
 		padding: 1.5em;
 		text-align: left;
-		background: #FFF url(../imagens/social-network.png)  right no-repeat;
+		background: #FFF url("../imagens/social-network.png")  right no-repeat;
 	}
 	.submitCadastro { margin-top: -18px; margin-left: 5px;}
 }
