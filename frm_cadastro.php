@@ -6,9 +6,9 @@
 <HTML LANG="pt-br">
 <HEAD>
  <TITLE>Social-Network - Cadastro</TITLE>
- <LINK REL="stylesheet" HREF="css/cadastro.css" TYPE="text/css" />
- <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
-<script type="text/javascript" src="js/efeitos.js"></script>
+ <LINK REL="stylesheet" HREF="assets/css/cadastro.css" TYPE="text/css" />
+ <script type="text/javascript" src="assets/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="assets/js/efeitos.js"></script>
 </HEAD>
 <BODY>
       <div id="topo">
@@ -43,7 +43,7 @@
                              $_POST[$key] = strip_tags(trim($val));
                            }
 
-                           include('db/db.class.php');
+                           include('controllers/db/db.class.php');
                            include('controllers/cadastro.class.php');
 
                            $nascimento= "$ano-$mes-$dia";
@@ -149,7 +149,7 @@
 						  <div>
                                <?php
 									echo '<div class="captchaFloat">';
-									echo '<img src="captcha/captcha.php" />';
+									echo '<img src="model/captcha/captcha.php" />';
 									echo '</div>';
 								?>
 								<div class="inputFloat">

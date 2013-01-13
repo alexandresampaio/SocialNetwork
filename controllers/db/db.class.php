@@ -7,7 +7,7 @@
        if(is_null(self::$conn))
        {
         self::$conn = new PDO('mysql:host=127.0.0.1; dbname=aularedesocial', 'root', '');
-		self::$conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
+		self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
        }
        return self::$conn;
       }
@@ -18,10 +18,10 @@
 		if (error_reporting() == 0) return;
 		
 		$exec = func_get_arg(0);
-		$errno = $exec -> getCode();
-		$errstr = $exec -> getMessage();
-		$errfile = $exec -> getFile();
-		$errline = $exec -> getLine();
+		$errno = $exec->getCode();
+		$errstr = $exec->getMessage();
+		$errfile = $exec->getFile();
+		$errline = $exec->getLine();
 		
 		$err = 'CAUGHT_EXCEPTION';
 		
