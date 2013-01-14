@@ -4,7 +4,7 @@
 		public  $erro = '';
 		private $cookie = true;
 		private $_tabela = 'usuarios';
-		private $prefix = 'SOCIALPHP_';
+		private $prefix = 'TESTEPHP_';
 
 		private function ENCRYPT($senha)
 		{
@@ -22,7 +22,7 @@
 			}
 			catch(PDOException $e)
 			{
-				$this->erro = "OH nao! Um Erro aconteceu."."<BR />Sistema Indisponivel";
+				echo $this->erro = "OH nao! Um Erro aconteceu."."<BR />Sistema Indisponivel<BR />";
 				logErros($e);
 				return false;
 			}
@@ -40,10 +40,10 @@
 				$_SESSION[$this->prefix.'usuario'] = $usuario;
 				$_SESSION[$this->prefix.'logado'] = true;
 				
-				if($lembrar)
-				{
-					$this->lembrardados($usuario, $senha);	
-				}
+				//if($lembrar)
+				//{
+				//	$this->lembrardados($usuario, $senha);	
+				//}
 				
 				if($this->cookie)
 				{
@@ -53,7 +53,7 @@
 											$_SERVER['HTTP_USER_AGENT']
 										  )
 								);
-					$valor = md5($valor);
+					$valor = sha1($valor);
 					setcookie($this->prefix.'token',$valor,0,'/');
 				}
 				return true;
@@ -72,7 +72,7 @@
 				session_start();	
 			}
 			
-			if(isset($_SESSION[$this->prefix.'logado']))
+			/*if(isset($_SESSION[$this->prefix.'logado']))
 			{
 				if($cookei)
 				{
@@ -83,11 +83,11 @@
 					$this->erro='Voce nao esta logado';
 					return false;	
 				}	
-			}
+			}*/
 			
 			if($this->cookie)
 			{
-				if(isset($_COOKIE[$this->prefix.'token']))
+				if(!isset($_COOKIE[$this->prefix.'token']))
 				{
 					$this->erro='voce nao esta logado';
 					return false;
