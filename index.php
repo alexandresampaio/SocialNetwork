@@ -1,4 +1,4 @@
-<?php include('views/shared/header.php'); ?>        
+<?php include('shared/header.php'); ?>        
         <div id="amarra-center-left">
         
             <div class="center">
@@ -52,4 +52,4 @@
                     
         </div><!--amarra-center-left-->
         
-<?php include('views/shared/footer.php'); ?>        
+<?php include('shared/footer.php'); ?>        

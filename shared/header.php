@@ -5,7 +5,7 @@
 	$objLogin = new Login;
 
 	if(!$objLogin->logado()){
-		include('views/login.php');
+		include('login.php');
 		exit();
 	}
 	
@@ -27,7 +27,7 @@
 		extract($dados,EXTR_PREFIX_ALL,'user'); 
 	}
 	
-	$user_imagem = (file_exists('public/uploads/usuarios/'.$user_imagem)) ? $user_imagem : 'default.png';
+	$user_imagem = (file_exists('/uploads/usuarios/'.$user_imagem)) ? $user_imagem : 'default.png';
 
 ?>
 
