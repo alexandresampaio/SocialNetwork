@@ -6,14 +6,14 @@
 <HTML LANG="pt-br">
 <HEAD>
  <TITLE>Social-Network - Cadastro</TITLE>
- <LINK REL="stylesheet" HREF="./assets/css/cadastro.css" TYPE="text/css" />
- <script type="text/javascript" src="app/assets/js/jquery-1.4.2.js"></script>
-<script type="text/javascript" src="app/assets/js/efeitos.js"></script>
+ <LINK REL="stylesheet" HREF="../assets/css/cadastro.css" TYPE="text/css" />
+ <script type="text/javascript" src="../assets/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="../assets/js/efeitos.js"></script>
 </HEAD>
 <BODY>
       <div id="topo">
            <div class="alinhamento">
-                <a href="#"><img SRC="app/assets/imagens/logo.png" alt="social-network.com" id="logo"/></a>
+                <a href="#"><img SRC="../assets/imagens/logo.png" alt="social-network.com" id="logo"/></a>
                 <span><span>&nbsp&nbsp</span><a href="#">Portal</a><a href="#">Forum</a></span>
            </div><!-- cAlign -->
       </div><!-- topo -->
@@ -43,8 +43,8 @@
                              $_POST[$key] = strip_tags(trim($val));
                            }
 
-                           include('config/db/db.class.php');
-                           include('app/controllers/cadastro.class.php');
+                           include('../config/db/db.class.php');
+                           include('../controllers/cadastro.class.php');
 
                            $nascimento= "$ano-$mes-$dia";
                            $cadastro = new Cadastro(
@@ -149,7 +149,7 @@
 						  <div>
                                <?php
 									echo '<div class="captchaFloat">';
-									echo '<img src="resource/captcha/captcha.php" />';
+									echo '<img src="../resource/captcha/captcha.php" />';
 									echo '</div>';
 								?>
 								<div class="inputFloat">

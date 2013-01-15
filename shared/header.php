@@ -1,33 +1,33 @@
 <?php
-include('config/db/db.class.php');
-include('controllers/login.class.php');
+	include('config/db/db.class.php');
+	include('controllers/login.class.php');
 
-$objLogin = new Login;
+	$objLogin = new Login;
 
-if(!$objLogin->logado()){
-	include('app/views/login.php');
-	exit();
-}
+	if(!$objLogin->logado()){
+		include('views/login.php');
+		exit();
+	}
+	
+	if(isset($_GET['sair']) AND $_GET['sair']==true)
+	{
+		$objLogin->sair();
+		header('Location: ./');
+	}
 
-if(isset($_GET['sair']) AND $_GET['sair']==true)
-{
-	$objLogin->sair();
-	header('Location: ./');
-}
+	$idExtrangeiro = (isset($_GET['uid'])) ? $_GET['uid'] : $_SESSION['socialallexonrails_uid'];
+	$idDaSessao = $_SESSION['socialallexonrails_uid'];
 
-$idExtrangeiro = (isset($_GET['uid'])) ? $_GET['uid'] : $_SESSION['socialbigui_uid'];
-$idDaSessao = $_SESSION['socialbigui_uid'];
-
-$dados = $objLogin->getDados($idExtrangeiro);
-
-if(is_null($dados)){
-	header('Location: ./');
-	exit();
-}else{
-	extract($dados,EXTR_PREFIX_ALL,'user'); 
-}
-
-$user_imagem = (file_exists('/public/uploads/usuarios/'.$user_imagem)) ? $user_imagem : 'default.png';
+	$dados = $objLogin->getDados($idExtrangeiro);
+	
+	if(is_null($dados)){
+		header('Location: ./');
+		exit();
+	}else{
+		extract($dados,EXTR_PREFIX_ALL,'user'); 
+	}
+	
+	$user_imagem = (file_exists('public/uploads/usuarios/'.$user_imagem)) ? $user_imagem : 'default.png';
 
 ?>
 
@@ -43,7 +43,7 @@ $user_imagem = (file_exists('/public/uploads/usuarios/'.$user_imagem)) ? $user_i
 
 <div id="topo">
 	<div class="cAlign">
-        <span><?php echo $_SESSION['socialbigui_usuario'] ?> | <a href="#">configura&ccedil;&ocirc;es</a> | <a href="?sair=true">sair</a></span>
+        <span><?php echo $_SESSION['socialallexonrails_usuario'] ?> | <a href="#">configura&ccedil;&ocirc;es</a> | <a href="?sair=true">sair</a></span>
     </div><!--calign-->
 </div><!--topo-->
 
