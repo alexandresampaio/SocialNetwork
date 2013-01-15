@@ -57,7 +57,7 @@
         
         	<div class="boxLogin2">
         		<h5>Você não tem uma conta?</h5>
-                <h4><a href="views/frm_cadastro.php">Crie uma agora</a></h4>
+                <h4><a href="frm_cadastro.php">Crie uma agora</a></h4>
     		</div><!--box login-->
     	</div><!--login-->
 	</body>
