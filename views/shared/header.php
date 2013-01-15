@@ -1,6 +1,6 @@
 <?php
 include('config/db/db.class.php');
-include('controllers/login.class.php');
+include('app/controllers/login.class.php');
 
 $objLogin = new Login;
 
