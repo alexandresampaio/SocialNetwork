@@ -14,7 +14,6 @@
 		{
 			$objLogin->sair();
 			header('Location: ./');
-			
 		}
 ?>
 
@@ -27,6 +26,5 @@
 
 <body>
 	Logado:<a href="?sair=true">Sair</a>
-	
 </body>
 </html>

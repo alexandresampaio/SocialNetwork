@@ -18,12 +18,12 @@
 			{
 				$validar = self::getConn()->prepare('SELECT `id` FROM `'.$this->_tabela.'` WHERE `email`=? AND `senha`=? LIMIT 1');
 				$validar->execute(array($usuario,$senha));
-				return ($validar->rowCount()>0) ? true : false;
+				return ($validar->rowCount()==1) ? true : false;
 			}
 			catch(PDOException $e)
 			{
-				echo $this->erro = "OH nao! Um Erro aconteceu."."<BR />Sistema Indisponivel<BR />";
 				logErros($e);
+				$this->erro = "OH nao! Um Erro aconteceu.";
 				return false;
 			}
 		}
@@ -40,11 +40,6 @@
 				$_SESSION[$this->prefix.'usuario'] = $usuario;
 				$_SESSION[$this->prefix.'logado'] = true;
 				
-				//if($lembrar)
-				//{
-				//	$this->lembrardados($usuario, $senha);	
-				//}
-				
 				if($this->cookie)
 				{
 					$valor=join('#',array(
@@ -56,11 +51,16 @@
 					$valor = sha1($valor);
 					setcookie($this->prefix.'token',$valor,0,'/');
 				}
+				
+				if($lembrar==true)
+				{
+					$this->lembrardados($usuario, $senha);	
+				}
 				return true;
 			}
 			else
 			{
-				$this->erro = 'usuario invalido';
+				$this->erro = "Usuario Inexistente.";
 				return false;	
 			}
 		}
@@ -72,18 +72,15 @@
 				session_start();	
 			}
 			
-			/*if(isset($_SESSION[$this->prefix.'logado']))
+			if(!isset($_SESSION[$this->prefix.'logado'] ) AND !$_SESSION[$this->prefix.'logado'])
 			{
-				if($cookei)
-				{
-					return $this->dadoslembrados();	
-				}
-				else
-				{
-					$this->erro='Voce nao esta logado';
-					return false;	
-				}	
-			}*/
+					if($cookei){
+						return $this->dadoslembrados();		
+					}else{	
+						$this->erro='voce nao esta logado';
+						return false; 	
+					}
+			}
 			
 			if($this->cookie)
 			{
@@ -166,7 +163,8 @@
 			
 			setcookie($this->prefix.'login_user',$usuario,$tempo,'/');
 			setcookie($this->prefix.'login_pass',$senha,$tempo,'/');			
-		}	
-	
+		}
+		
+		
 	}
 ?>

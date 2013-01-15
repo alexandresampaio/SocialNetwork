@@ -12,7 +12,7 @@
 			{
 				$usuario = strip_tags($_POST['email']);
 				$senha = strip_tags($_POST['senha']);
-				$lembrar = (isset($_POST['lembrar']));
+				$lembrar = isset($_POST['lembrar']);
 				
 				if($objLogin->logar($usuario, $senha , $lembrar))
 				{
